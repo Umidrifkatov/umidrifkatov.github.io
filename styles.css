@@ -178,3 +178,37 @@ body {
         padding-left: 20px;
     }
 }
+
+
+.typing-container {
+    min-height: 50px; /* Adjust this value based on your font size */
+    display: flex;
+    align-items: center;
+}
+
+.typed-text {
+    margin: 0;
+}
+
+.profile-image {
+    padding: 15px;
+    text-align: center;
+}
+
+.profile-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 5px solid white;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+/* Update hero-section padding */
+.hero-section {
+    padding: 50px 0;
+}
+
+/* Remove footer-related styles */
+.footer {
+    display: none;
+}
