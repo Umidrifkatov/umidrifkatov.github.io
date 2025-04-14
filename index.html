@@ -1,245 +1,544 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umid Tokhtamuratov - Resume</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+    <title>Nikoh Oqshomi - Shaxboz & Sevinch</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap');
+
+        :root {
+            --primary-color: #2e5d4b; /* Green from man's outfit */
+            --secondary-color: #f5f1e6; /* Cream color from clothing */
+            --accent-color: #c9a55c; /* Gold from decorative elements */
+            --text-color: #3a3a3a;
+            --light-text: #f8f5f0;
+            --dark-accent: #234539;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            max-width: 100%;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50 L50 55 L55 50 Z' fill='%23c9a55c' fill-opacity='0.05'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #fff;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            border: 1px solid rgba(201, 165, 92, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 20px 10px;
+            font-family: 'Cormorant Garamond', serif;
+            position: relative;
+            background: linear-gradient(to bottom, rgba(46, 93, 75, 0.95), rgba(46, 93, 75, 0.8));
+            color: var(--light-text);
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .header:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20 C25 15, 15 15, 20 20 C15 25, 25 25, 20 20' stroke='%23f5f1e6' stroke-width='1' fill='none' stroke-opacity='0.2'/%3E%3C/svg%3E");
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h2 {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        .header:after {
+            content: "❦";
+            font-size: 24px;
+            color: var(--accent-color);
+            display: block;
+            margin: 10px auto 0;
+        }
+
+        .couple-image-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background-color: var(--dark-accent);
+        }
+
+        .couple-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            opacity: 0.95;
+            transition: opacity 0.3s;
+        }
+
+        .couple-image:hover {
+            opacity: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(35, 69, 57, 0.9));
+            padding: 40px 20px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .overlay h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .invitation-text {
+            padding: 35px 25px;
+            text-align: center;
+            position: relative;
+            background-color: #fff;
+            border-bottom: 1px solid rgba(201, 165, 92, 0.3);
+        }
+
+        .invitation-text:before,
+        .invitation-text:after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 2px;
+            background-color: var(--accent-color);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .invitation-text:before {
+            top: 20px;
+        }
+
+        .invitation-text:after {
+            bottom: 20px;
+        }
+
+        .invitation-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .couple-names {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+            font-weight: 500;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 1px;
+        }
+
+        .invitation-details {
+            margin: 30px 0;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .invitation-details:before,
+        .invitation-details:after {
+            content: "";
+            position: absolute;
+            height: 1px;
+            background-image: linear-gradient(to right, transparent, var(--accent-color), transparent);
+            left: 10%;
+            right: 10%;
+        }
+
+        .invitation-details:before {
+            top: 0;
+        }
+
+        .invitation-details:after {
+            bottom: 0;
+        }
+
+        .date-time {
+            font-weight: 500;
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        .venue {
+            font-style: italic;
+            margin: 15px 0;
+            font-size: 18px;
+        }
+
+        .message {
+            margin: 25px 0;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .map-container iframe {
+            display: block; /* Убираем лишние отступы под iframe */
+            width: 100%;
+            height: 400px; /* Стандартная высота виджета */
+            border: none; /* Убираем границу iframe */
+            border-top: 3px solid var(--accent-color);
+        }
+
+        /* Стилизация ссылок внутри блока карты (если они видны) */
+        .map-container a {
+            color: #eee;
+            font-size: 12px;
+            position: absolute;
+            top: 0; /* Позиционирование текста */
+        }
+        .map-container a:nth-of-type(2) { top: 14px; }
+        .map-container a:nth-of-type(3) { top: 28px; }
+
+
+        .decorative-element {
+            text-align: center;
+            margin: 25px 0;
+            color: var(--accent-color);
+            font-size: 26px;
+            position: relative;
+        }
+
+        .decorative-element:before,
+        .decorative-element:after {
+            content: "";
+            position: absolute;
+            height: 1px;
+            background-color: var(--accent-color);
+            opacity: 0.5;
+            width: 30%;
+            top: 50%;
+        }
+
+        .decorative-element:before {
+            left: 5%;
+        }
+
+        .decorative-element:after {
+            right: 5%;
+        }
+
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 16px;
+            position: relative;
+            border-top: 3px solid var(--accent-color);
+        }
+
+        .footer:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20 C25 15, 15 15, 20 20 C15 25, 25 25, 20 20' stroke='%23f5f1e6' stroke-width='1' fill='none' stroke-opacity='0.2'/%3E%3C/svg%3E");
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .footer p {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 8px; /* Добавлен небольшой отступ между параграфами */
+        }
+
+        .footer p:first-child {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Стили для ссылки на разработчика */
+        .developer-credit {
+            font-size: 12px; /* Мелкий шрифт */
+            opacity: 0.7; /* Немного прозрачности */
+            margin-top: 15px; /* Отступ сверху */
+        }
+        .developer-credit a {
+            color: var(--light-text); /* Цвет ссылки как у текста футера */
+            text-decoration: none; /* Убрать подчеркивание */
+        }
+        .developer-credit a:hover {
+            text-decoration: underline; /* Подчеркивание при наведении */
+        }
+
+        .countdown {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20 C25 15, 15 15, 20 20 C15 25, 25 25, 20 20' stroke='%23ffffff' stroke-width='1' fill='none' stroke-opacity='0.2'/%3E%3C/svg%3E");
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .countdown-title {
+            margin-bottom: 15px;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-value {
+            font-size: 28px;
+            font-weight: 600;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .countdown-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+        .ornament {
+            display: inline-block;
+            margin: 0 10px;
+            color: var(--accent-color);
+        }
+
+        .location-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .location-address {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .header h2 {
+                font-size: 22px;
+            }
+
+            .invitation-title {
+                font-size: 24px;
+            }
+
+            .couple-names {
+                font-size: 22px;
+            }
+
+            .countdown-timer {
+                gap: 15px;
+            }
+
+            .countdown-value {
+                font-size: 24px;
+            }
+            .map-container iframe {
+                 height: 350px; /* Немного уменьшить карту на маленьких экранах */
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="language-switcher">
-        <button class="btn btn-link active" data-lang="en">EN</button>
-        <button class="btn btn-link" data-lang="uz">UZ</button>
-        <button class="btn btn-link" data-lang="ru">RU</button>
-    </div>
+    <div class="container">
+        <div class="header">
+            <h1>NIKOH OQSHOMI</h1>
+            <h2>Shaxboz & Sevinch</h2>
+        </div>
 
-    <!-- Header Section -->
-    <header class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-3">
-                    <div class="profile-image">
-                        <!-- Add your image here -->
-                        <img src="img.jpg" alt="Umid Tokhtamuratov" class="rounded-circle img-fluid">
-                    </div>
+        <div class="couple-image-container">
+             <img src="1.jpg" alt="Shaxboz & Sevinch" class="couple-image" />
+            <div class="overlay">
+                <h2>19.04.2025</h2>
+            </div>
+        </div>
+
+        <div class="invitation-text">
+            <div class="invitation-title">NIKOH OQSHOMIGA TAKLIF ETAMIZ</div>
+
+            <div class="couple-names">Shaxboz & Sevinch</div>
+
+            <p class="message">Hurmatli mehmonimiz!<br>Sizni to'y marosimimiz davrasiga tashrif buyurishingizni so'raymiz</p>
+
+            <div class="invitation-details">
+                <div class="date-time">19 Aprel, 2025-yil<br>Shanba kuni, soat 18:00 da</div>
+                <div class="venue">"Bexruz" to'yxonasi</div>
+            </div>
+
+            <p class="message">Nikoh oqshomida sizni kutib qolamiz<br>Mehmonimiz bo'lsangiz, biz uchun katta sharaf</p>
+
+            <div class="decorative-element">❦</div>
+
+            <p>Tashrif buyurishingizni so'raymiz</p>
+        </div>
+
+        <div class="countdown">
+            <div class="countdown-title">To'y kunigacha qolgan vaqt</div>
+            <div class="countdown-timer" id="countdown">
+                <div class="countdown-box">
+                    <span class="countdown-value" id="days">00</span>
+                    <span class="countdown-label">kun</span>
                 </div>
-                <div class="col-md-5">
-                    <h1>Umid Tokhtamuratov</h1>
-                    <div class="typing-container">
-                        <h2 class="typed-text"></h2>
-                    </div>
+                <div class="countdown-box">
+                    <span class="countdown-value" id="hours">00</span>
+                    <span class="countdown-label">soat</span>
                 </div>
-                <div class="col-md-4 text-end">
-                    <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> umidrifkatov@gmail.com</p>
-                        <p><i class="fas fa-phone"></i> +998935237632</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Tashkent, Uzbekistan</p>
-                    </div>
+                <div class="countdown-box">
+                    <span class="countdown-value" id="minutes">00</span>
+                    <span class="countdown-label">daqiqa</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-value" id="seconds">00</span>
+                    <span class="countdown-label">soniya</span>
                 </div>
             </div>
         </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Current Position -->
-        <section id="current" class="section">
-            <h3 class="section-title" data-i18n="current_position">Current Position</h3>
-            <div class="card">
-                <div class="card-body">
-                    <h4>PhD Researcher</h4>
-                    <p class="organization">Republican Center of Oncology and Radiology</p>
-                    <p class="period">January 2024 - Present</p>
-                    <p class="description" data-i18n="current_desc">Working on mammography screening classification AI</p>
-                </div>
-            </div>
-        </section>
+        <div class="invitation-text">
+            <div class="location-title">MANZIL</div>
+            <p class="location-address">Toshkent shahri, "Behruz" to'yxonasi</p>
+        </div>
 
-        <!-- Experience -->
-        <section id="experience" class="section">
-            <h3 class="section-title" data-i18n="experience">Work Experience</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>Outsourced Specialist</h4>
-                        <p class="organization">Ministry of Health of Uzbekistan</p>
-                        <p class="period">March 2024 - April 2024</p>
-                        <ul>
-                            <li>Work on the 2030 strategy in healthcare</li>
-                            <li>Reform of state body for licensing medical institutions</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>Oncologist</h4>
-                        <p class="organization">Republican Center of Oncology and Radiology</p>
-                        <p class="period">September 2023 - January 2024</p>
-                        <ul>
-                            <li>Administered chemotherapy treatments</li>
-                            <li>Managed patients (medical practice)</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>IT Project Manager</h4>
-                        <p class="organization">Viva Med</p>
-                        <p class="period">September 2023 - March 2024</p>
-                        <ul>
-                            <li>Creation of a management system (EHR) for hospitals</li>
-                            <li>Integration laboratory data transfering with EHR</li>
-                            <li>Managing and hiring team of software developers</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>Software Engineer</h4>
-                        <p class="organization">Unimedtrade LLC</p>
-                        <p class="period">November 2021 - January 2023</p>
-                        <ul>
-                            <li>Creation of a management system (EHR) for hospitals free of charge, which has accelerated patient throughput by an average of 24%</li>
-                            <li>Creation of a management system (EHR) for private and public universities</li>
-                            <li>Creation of sites (based on Python) for educational platforms and private companies</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>Oncology Resident</h4>
-                        <p class="organization">N. Blokhin Russian Cancer Research Center</p>
-                        <p class="period">September 2021 - July 2023</p>
-                        <ul>
-                            <li>Diagnosis, treatment, and care of cancer patients</li>
-                            <li>Conducting chemotherapy</li>
-                            <li>Providing administrative assistance in paperwork</li>
-                            <li>Assistance in creating a database of students</li>
-                            <li>Providing courses for undergraduate students</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>Doctor's Assistant</h4>
-                        <p class="organization">Republican Diagnostic Center</p>
-                        <p class="period">May 2021 - September 2021</p>
-                        <ul>
-                            <li>Assist diagnosis, treatment, and care of patients</li>
-                            <li>Providing administrative assistance in paperwork</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>Volunteer</h4>
-                        <p class="organization">WHO Country Office in Uzbekistan</p>
-                        <p class="period">October 2021 - December 2021</p>
-                        <ul>
-                            <li>Conducting online classes on antimicrobial resistance for children</li>
-                            <li>Support in preparing presentations for health lessons</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>Co-founder & Python Mentor</h4>
-                        <p class="organization">IT-Labs School</p>
-                        <p class="period">November 2020 - January 2021</p>
-                        <ul>
-                            <li>Teaching Python Programming course</li>
-                            <li>Creating a structure and plan for a programming training course</li>
-                            <li>Organization of management and financing for opening a school</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>Volunteer</h4>
-                        <p class="organization">World Antimicrobials Awareness Week 2020, WHO Country Office</p>
-                        <p class="period">October 2020 - January 2021</p>
-                        <ul>
-                            <li>Creation of a website about the campaign</li>
-                            <li>Creation of a video about the results of the campaign</li>
-                            <li>Conducting health lessons in schools</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h4>Receptionist / CT operator</h4>
-                        <p class="organization">Shox International Hospital</p>
-                        <p class="period">March 2019 - September 2020</p>
-                        <ul>
-                            <li>Instruct patients</li>
-                            <li>Controlling imaging process</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Add more experience items here -->
-            </div>
-        </section>
+        <div class="map-container" style="position:relative;overflow:hidden;">
+            <a href="https://yandex.uz/maps/org/76740654566/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Behruz</a>
+            <a href="https://yandex.uz/maps/10335/tashkent/category/banquet_hall/184108315/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Банкетный зал в Ташкенте</a>
+            <iframe src="https://yandex.uz/map-widget/v1/org/76740654566/?ll=69.327778%2C41.310799&z=15" frameborder="0" allowfullscreen="true" style="position:relative;"></iframe>
+        </div>
 
-        <!-- Education -->
-        <section id="education" class="section">
-            <h3 class="section-title" data-i18n="education">Education</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="education-item">
-                        <h4>PhD in Medical Science</h4>
-                        <p class="organization">Republican Center of Oncology and Radiology</p>
-                        <p class="period">2024 - Present</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="education-item">
-                        <h4>Residency - Oncology</h4>
-                        <p class="organization">Pirogov Russian National Research Medical University</p>
-                        <p class="period">2021 - 2023</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="footer">
+            <p>Shaxboz & Sevinch</p>
+            <p>19-aprel, 2025-yil</p>
+             <p class="developer-credit">
+                Sayt ishlab chiqdi: <a href="https://t.me/hrdcix" target="_blank" rel="noopener noreferrer">@hrdcix</a>
+            </p>
+        </div>
 
-        <!-- Skills -->
-        <section id="skills" class="section">
-            <h3 class="section-title" data-i18n="skills">Skills & Languages</h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <h4 data-i18n="languages">Languages</h4>
-                    <ul class="skills-list">
-                        <li>English - B2 (IELTS-6.0)</li>
-                        <li>Russian - Fluent</li>
-                        <li>Uzbek - Native</li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <h4 data-i18n="technical_skills">Technical Skills</h4>
-                    <ul class="skills-list">
-                        <li>Python Programming</li>
-                        <li>Healthcare Informatics</li>
-                        <li>Project Management</li>
-                        <li>Medical Research</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </main>
+    </div>
 
+    <script>
+        // Countdown Timer
+        const weddingDate = new Date("April 19, 2025 18:00:00").getTime();
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
-    <script src="script.js"></script>
+        const countdownFunction = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                // Проверяем, существует ли элемент перед изменением
+                const countdownElement = document.getElementById("countdown");
+                if (countdownElement) {
+                    countdownElement.innerHTML = "<div style='font-size: 20px; font-weight: bold;'>TO'Y KUNI YETIB KELDI!</div>";
+                    countdownElement.style.display = 'block'; // Убедиться, что блок виден
+                }
+                 // Скрыть родительский блок .countdown, если таймер закончился
+                const countdownContainer = document.querySelector('.countdown');
+                if (countdownContainer) {
+                    countdownContainer.style.display = 'none'; // Прячем блок с таймером
+                }
+                return; // Выход из функции, если время вышло
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Проверяем существование элементов перед обновлением
+            const daysEl = document.getElementById("days");
+            const hoursEl = document.getElementById("hours");
+            const minutesEl = document.getElementById("minutes");
+            const secondsEl = document.getElementById("seconds");
+
+            if (daysEl) daysEl.innerText = days.toString().padStart(2, '0');
+            if (hoursEl) hoursEl.innerText = hours.toString().padStart(2, '0');
+            if (minutesEl) minutesEl.innerText = minutes.toString().padStart(2, '0');
+            if (secondsEl) secondsEl.innerText = seconds.toString().padStart(2, '0');
+
+        }, 1000);
+
+        // Вызываем функцию сразу при загрузке, чтобы избежать показа 00:00:00:00
+        countdownFunction();
+    </script>
+
 </body>
 </html>
