@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nikoh Oqshomi - Shaxboz & Sevinch</title>
+    <title>Umid Tokhtamuratov | ML Engineer & PhD Researcher</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Lora:wght@400;500;600&display=swap');
+        /* CSS RESET & FONT IMPORT */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
         :root {
-            --primary-color: #2e5d4b; /* Green from man's outfit */
-            --secondary-color: #f5f1e6; /* Cream color from clothing */
-            --accent-color: #c9a55c; /* Gold from decorative elements */
-            --text-color: #3a3a3a;
-            --light-text: #f8f5f0;
-            --dark-accent: #234539;
+            --primary-color: #00f7ff; /* Neon Cyan */
+            --secondary-color: #8892b0;
+            --background-color: #0a192f;
+            --card-background: #112240;
+            --text-color: #ccd6f6;
+            --border-radius: 8px;
+            --transition-speed: 0.3s ease;
         }
 
         * {
@@ -22,522 +24,896 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Lora', serif;
-            background-color: var(--secondary-color);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
-            max-width: 100%;
-            overflow-x: hidden;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 50 L50 55 L55 50 Z' fill='%23c9a55c' fill-opacity='0.05'/%3E%3C/svg%3E");
-            background-attachment: fixed;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* SCROLLBAR STYLING */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--background-color);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00c5cc;
         }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0;
-            background-color: #fff;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-            position: relative;
-            border: 1px solid rgba(201, 165, 92, 0.3);
-        }
-
-        .header {
-            text-align: center;
-            padding: 30px 20px 10px;
-            font-family: 'Cormorant Garamond', serif;
-            position: relative;
-            background: linear-gradient(to bottom, rgba(46, 93, 75, 0.95), rgba(46, 93, 75, 0.8));
-            color: var(--light-text);
-            border-bottom: 3px solid var(--accent-color);
-        }
-
-        .header:before {
-            content: "";
-            position: absolute;
+        /* PARTICLES JS BACKGROUND */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20 C25 15, 15 15, 20 20 C15 25, 25 25, 20 20' stroke='%23f5f1e6' stroke-width='1' fill='none' stroke-opacity='0.2'/%3E%3C/svg%3E");
-            opacity: 0.2;
-            z-index: 0;
+            z-index: -1;
         }
 
-        .header h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-            letter-spacing: 3px;
-            font-weight: 600;
-            position: relative;
-            z-index: 1;
+        /* CONTAINER & UTILITY CLASSES */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
         }
 
-        .header h2 {
-            font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-            font-style: italic;
+        section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        .header:after {
-            content: "❦";
-            font-size: 24px;
-            color: var(--accent-color);
-            display: block;
-            margin: 10px auto 0;
-        }
-
-        .couple-image-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            background-color: var(--dark-accent);
-        }
-
-        .couple-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            opacity: 0.95;
-            transition: opacity 0.3s;
-        }
-
-        .couple-image:hover {
+        section.visible {
             opacity: 1;
+            transform: translateY(0);
         }
 
-        .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(35, 69, 57, 0.9));
-            padding: 40px 20px 20px;
-            color: white;
-            text-align: center;
-        }
-
-        .overlay h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
-        }
-
-        .invitation-text {
-            padding: 35px 25px;
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
             text-align: center;
             position: relative;
-            background-color: #fff;
-            border-bottom: 1px solid rgba(201, 165, 92, 0.3);
+            padding-bottom: 15px;
         }
-
-        .invitation-text:before,
-        .invitation-text:after {
-            content: "";
+        
+        h2::after {
+            content: '';
             position: absolute;
-            width: 100px;
-            height: 2px;
-            background-color: var(--accent-color);
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--primary-color);
         }
 
-        .invitation-text:before {
-            top: 20px;
+        h3 {
+            color: var(--text-color);
+            font-size: 1.4rem;
+            margin-bottom: 5px;
         }
 
-        .invitation-text:after {
-            bottom: 20px;
-        }
-
-        .invitation-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 26px;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        .couple-names {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: var(--accent-color);
-            font-weight: 500;
-            font-family: 'Cormorant Garamond', serif;
-            letter-spacing: 1px;
-        }
-
-        .invitation-details {
-            margin: 30px 0;
-            padding: 20px 0;
-            position: relative;
-        }
-
-        .invitation-details:before,
-        .invitation-details:after {
-            content: "";
-            position: absolute;
-            height: 1px;
-            background-image: linear-gradient(to right, transparent, var(--accent-color), transparent);
-            left: 10%;
-            right: 10%;
-        }
-
-        .invitation-details:before {
-            top: 0;
-        }
-
-        .invitation-details:after {
-            bottom: 0;
-        }
-
-        .date-time {
-            font-weight: 500;
-            margin: 15px 0;
-            font-size: 18px;
-        }
-
-        .venue {
-            font-style: italic;
-            margin: 15px 0;
-            font-size: 18px;
-        }
-
-        .message {
-            margin: 25px 0;
-            font-size: 18px;
-            line-height: 1.8;
-        }
-
-        .map-container iframe {
-            display: block; /* Убираем лишние отступы под iframe */
-            width: 100%;
-            height: 400px; /* Стандартная высота виджета */
-            border: none; /* Убираем границу iframe */
-            border-top: 3px solid var(--accent-color);
-        }
-
-        /* Стилизация ссылок внутри блока карты (если они видны) */
-        .map-container a {
-            color: #eee;
-            font-size: 12px;
-            position: absolute;
-            top: 0; /* Позиционирование текста */
-        }
-        .map-container a:nth-of-type(2) { top: 14px; }
-        .map-container a:nth-of-type(3) { top: 28px; }
-
-
-        .decorative-element {
-            text-align: center;
-            margin: 25px 0;
-            color: var(--accent-color);
-            font-size: 26px;
-            position: relative;
-        }
-
-        .decorative-element:before,
-        .decorative-element:after {
-            content: "";
-            position: absolute;
-            height: 1px;
-            background-color: var(--accent-color);
-            opacity: 0.5;
-            width: 30%;
-            top: 50%;
-        }
-
-        .decorative-element:before {
-            left: 5%;
-        }
-
-        .decorative-element:after {
-            right: 5%;
-        }
-
-        .footer {
-            background-color: var(--primary-color);
-            color: var(--light-text);
-            text-align: center;
-            padding: 25px 20px;
-            font-size: 16px;
-            position: relative;
-            border-top: 3px solid var(--accent-color);
-        }
-
-        .footer:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20 C25 15, 15 15, 20 20 C15 25, 25 25, 20 20' stroke='%23f5f1e6' stroke-width='1' fill='none' stroke-opacity='0.2'/%3E%3C/svg%3E");
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .footer p {
-            position: relative;
-            z-index: 1;
-            margin-bottom: 8px; /* Добавлен небольшой отступ между параграфами */
-        }
-
-        .footer p:first-child {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        /* Стили для ссылки на разработчика */
-        .developer-credit {
-            font-size: 12px; /* Мелкий шрифт */
-            opacity: 0.7; /* Немного прозрачности */
-            margin-top: 15px; /* Отступ сверху */
-        }
-        .developer-credit a {
-            color: var(--light-text); /* Цвет ссылки как у текста футера */
-            text-decoration: none; /* Убрать подчеркивание */
-        }
-        .developer-credit a:hover {
-            text-decoration: underline; /* Подчеркивание при наведении */
-        }
-
-        .countdown {
-            background-color: var(--accent-color);
-            color: white;
-            padding: 20px 15px;
-            text-align: center;
-            margin: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .countdown:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20 C25 15, 15 15, 20 20 C15 25, 25 25, 20 20' stroke='%23ffffff' stroke-width='1' fill='none' stroke-opacity='0.2'/%3E%3C/svg%3E");
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .countdown-title {
-            margin-bottom: 15px;
-            font-weight: 500;
-            position: relative;
-            z-index: 1;
-            font-size: 18px;
-            letter-spacing: 1px;
-        }
-
-        .countdown-timer {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .countdown-box {
+        /* HEADER / HERO SECTION */
+        .hero {
+            height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
+            text-align: center;
+            padding: 0 20px;
         }
-
-        .countdown-value {
-            font-size: 28px;
-            font-weight: 600;
-            font-family: 'Cormorant Garamond', serif;
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease-out;
         }
-
-        .countdown-label {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
-        }
-
-        .ornament {
-            display: inline-block;
-            margin: 0 10px;
-            color: var(--accent-color);
-        }
-
-        .location-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 26px;
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
             color: var(--primary-color);
-            margin-bottom: 15px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease-out 0.5s;
+            animation-fill-mode: backwards;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 25px;
+            font-size: 1.1rem;
+            animation: fadeInUp 1s ease-out 1s;
+            animation-fill-mode: backwards;
+        }
+
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: var(--transition-speed);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--primary-color);
+            font-size: 0.8rem;
             letter-spacing: 1px;
+            animation: bounce 2s infinite, fadeIn 2s ease;
+        }
+        
+        .scroll-down::after {
+            content: '↓';
+            display: block;
+            font-size: 1.5rem;
+        }
+
+        /* TIMELINE STYLING */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--card-background);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(0, 247, 255, 0.3);
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--background-color);
+            border: 4px solid var(--primary-color);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 28px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--card-background);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--card-background);
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 28px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--card-background);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--card-background) transparent transparent;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .content {
+            padding: 20px 30px;
+            background-color: var(--card-background);
+            position: relative;
+            border-radius: var(--border-radius);
+            border: 1px solid #1d2d50;
+            transition: all var(--transition-speed);
+        }
+        
+        .content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .content .date {
+            color: var(--primary-color);
             font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .content .company {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-style: italic;
         }
 
-        .location-address {
-            font-size: 18px;
+        .content ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 15px;
+        }
+
+        .content ul li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--secondary-color);
+        }
+
+        .content ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        /* AWARDS & SKILLS SECTION */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .card {
+            background-color: var(--card-background);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border: 1px solid #1d2d50;
+            transition: all var(--transition-speed);
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary-color);
+        }
+
+        .card .date {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .card p {
+            color: var(--secondary-color);
+        }
+        
+        #skills .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        #skills h3 {
+            color: var(--primary-color);
             margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--card-background);
+        }
+        
+        .skill-item {
+            background: var(--card-background);
+            color: var(--text-color);
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: var(--transition-speed);
+        }
+        .skill-item:hover {
+            background: var(--primary-color);
+            color: var(--background-color);
+            transform: scale(1.05);
+        }
+        
+        .language-item {
+            margin-bottom: 10px;
+        }
+        .language-item strong {
+            color: var(--text-color);
+        }
+        .language-item span {
+            color: var(--secondary-color);
+        }
+        
+        /* REFERENCES */
+        .reference-card {
+             background-color: var(--card-background);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+        }
+        .reference-card p {
+            margin: 5px 0;
+        }
+        .reference-card .ref-name {
+            font-weight: 700;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+        .reference-card .ref-title {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        .reference-card .ref-contact {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
         }
 
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 28px;
-            }
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--card-background);
+        }
+        footer p {
+            color: var(--secondary-color);
+        }
+        
+        /* ANIMATIONS */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-15px) translateX(-50%); }
+            60% { transform: translateY(-8px) translateX(-50%); }
+        }
 
-            .header h2 {
-                font-size: 22px;
+        /* RESPONSIVE DESIGN */
+        @media screen and (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
             }
-
-            .invitation-title {
-                font-size: 24px;
+            .hero h1 {
+                font-size: 2.5rem;
             }
-
-            .couple-names {
-                font-size: 22px;
+            .hero .subtitle {
+                font-size: 1.2rem;
             }
-
-            .countdown-timer {
+            .contact-info {
+                flex-direction: column;
                 gap: 15px;
             }
-
-            .countdown-value {
-                font-size: 24px;
+            .container {
+                padding: 0 20px;
             }
-            .map-container iframe {
-                 height: 350px; /* Немного уменьшить карту на маленьких экранах */
+
+            .timeline::after {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 15px;
+            }
+
+            .timeline-item::before {
+                left: 50px;
+                border: medium solid var(--card-background);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--card-background) transparent transparent;
+            }
+
+            .left::after, .right::after {
+                left: 10px;
+            }
+
+            .right {
+                left: 0%;
+            }
+            
+            #skills .skills-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>NIKOH OQSHOMI</h1>
-            <h2>Shaxboz & Sevinch</h2>
-        </div>
 
-        <div class="couple-image-container">
-             <img src="1.jpg" alt="Shaxboz & Sevinch" class="couple-image" />
-            <div class="overlay">
-                <h2>19.04.2025</h2>
+    <div id="particles-js"></div>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Umid Tokhtamuratov</h1>
+            <p class="subtitle">ML Engineer & PhD Researcher | Bridging AI and Healthcare</p>
+            <div class="contact-info">
+                <a href="mailto:umidrifkatov@gmail.com">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    umidrifkatov@gmail.com
+                </a>
+                <a href="tel:+998935237632">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    +998935237632
+                </a>
+                 <a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3l8-8"></path><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"></path></svg>
+                    Tashkent, Uzbekistan
+                </a>
             </div>
         </div>
+        <div class="scroll-down">SCROLL</div>
+    </header>
 
-        <div class="invitation-text">
-            <div class="invitation-title">NIKOH OQSHOMIGA TAKLIF ETAMIZ</div>
+    <main class="container">
 
-            <div class="couple-names">Shaxboz & Sevinch</div>
-
-            <p class="message">Hurmatli mehmonimiz!<br>Sizni to'y marosimimiz davrasiga tashrif buyurishingizni so'raymiz</p>
-
-            <div class="invitation-details">
-                <div class="date-time">19 Aprel, 2025-yil<br>Shanba kuni, soat 18:00 da</div>
-                <div class="venue">"Bexruz" to'yxonasi</div>
+        <section id="experience">
+            <h2>Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="content">
+                        <span class="date">Feb. 2025 – Current</span>
+                        <h3>ML Engineer</h3>
+                        <span class="company">Uzinfocom</span>
+                        <ul>
+                            <li>AI development in healthcare sector.</li>
+                            <li>Prepare data and train AI model.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <span class="date">Jan. 2024 – Current</span>
+                        <h3>PhD Researcher</h3>
+                        <span class="company">Republican Center of Oncology and Radiology, Tashkent</span>
+                        <ul>
+                            <li>Focus on mammography screening classification AI.</li>
+                            <li>Providing courses for undergraduate students.</li>
+                            <li>Prepare data and train AI model.</li>
+                            <li>Conducting a comparison of the effectiveness of AI against radiologists.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content">
+                        <span class="date">Mar. 2024 – Apr. 2024</span>
+                        <h3>Outsourced Specialist</h3>
+                        <span class="company">Ministry of Health of Uzbekistan</span>
+                        <ul>
+                            <li>Worked on the 2030 healthcare strategy.</li>
+                            <li>Analyzed volumes of medical care in regional hospitals.</li>
+                            <li>Contributed to the reform of the state body for licensing and accreditation.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <span class="date">Sep. 2023 – Jan. 2024</span>
+                        <h3>Oncologist</h3>
+                        <span class="company">Republican Center of Oncology and Radiology, Tashkent</span>
+                        <ul>
+                            <li>Administered chemotherapy treatments.</li>
+                            <li>Managed patients in medical practice.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="content">
+                        <span class="date">Sep. 2023 – Mar. 2024</span>
+                        <h3>IT Project Manager</h3>
+                        <span class="company">Viva Med, Tashkent</span>
+                        <ul>
+                            <li>Led creation of a hospital management system (EHR).</li>
+                            <li>Managed integration of laboratory data transfer with EHR.</li>
+                            <li>Handled hiring and management of the software development team.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <span class="date">Nov. 2021 – Jan. 2023</span>
+                        <h3>Software Engineer</h3>
+                        <span class="company">Unimedtrade LLC, Tashkent</span>
+                        <ul>
+                            <li>Created a free EHR for hospitals, increasing patient throughput by 24%.</li>
+                            <li>Developed a management system for private and public universities.</li>
+                            <li>Built Python-based websites for educational platforms and companies.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                     <div class="content">
+                        <span class="date">Sep. 2021 – Jul. 2023</span>
+                        <h3>Oncology Resident</h3>
+                        <span class="company">N. Blokhin Russian Cancer Research Center, Moscow</span>
+                        <ul>
+                            <li>Diagnosis, treatment, and care of cancer patients.</li>
+                            <li>Conducted chemotherapy and provided administrative assistance.</li>
+                            <li>Assisted in creating a student database and provided courses.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="timeline-item right">
+                    <div class="content">
+                        <span class="date">May 2021 - Sep. 2021</span>
+                        <h3>Doctor's Assistant</h3>
+                        <span class="company">Republican Diagnostic Center, Tashkent</span>
+                        <ul>
+                            <li>Assisted in diagnosis, treatment, and care of patients.</li>
+                            <li>Provided administrative assistance in paperwork.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="timeline-item left">
+                    <div class="content">
+                        <span class="date">Oct. 2021 - Dec. 2021</span>
+                        <h3>Volunteer</h3>
+                        <span class="company">WHO Country Office in Uzbekistan, Tashkent</span>
+                        <ul>
+                            <li>Conducted online classes on antimicrobial resistance for children.</li>
+                            <li>Supported in preparing presentations for health lessons.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="timeline-item right">
+                    <div class="content">
+                        <span class="date">Nov. 2020 - Jan. 2021</span>
+                        <h3>Co-founder & Python Mentor</h3>
+                        <span class="company">IT-Labs school, Tashkent</span>
+                        <ul>
+                            <li>Taught Python Programming course.</li>
+                            <li>Created structure and plan for the training course.</li>
+                            <li>Organized management and financing for the school.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="timeline-item left">
+                    <div class="content">
+                        <span class="date">Oct. 2020 - Jan. 2021</span>
+                        <h3>Volunteer for WAAW 2020</h3>
+                        <span class="company">WHO Country Office in Uzbekistan, Tashkent</span>
+                        <ul>
+                            <li>Created a website and video for the campaign.</li>
+                            <li>Conducted health lessons in schools.</li>
+                        </ul>
+                    </div>
+                </div>
+                 <div class="timeline-item right">
+                    <div class="content">
+                        <span class="date">Mar. 2019 - Sep. 2020</span>
+                        <h3>Receptionist / CT operator</h3>
+                        <span class="company">Shox International Hospital, Tashkent</span>
+                        <ul>
+                            <li>Instructed patients and controlled the imaging process.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <p class="message">Nikoh oqshomida sizni kutib qolamiz<br>Mehmonimiz bo'lsangiz, biz uchun katta sharaf</p>
-
-            <div class="decorative-element">❦</div>
-
-            <p>Tashrif buyurishingizni so'raymiz</p>
-        </div>
-
-        <div class="countdown">
-            <div class="countdown-title">To'y kunigacha qolgan vaqt</div>
-            <div class="countdown-timer" id="countdown">
-                <div class="countdown-box">
-                    <span class="countdown-value" id="days">00</span>
-                    <span class="countdown-label">kun</span>
+        <section id="education">
+            <h2>Formal Education & Qualifications</h2>
+             <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="content">
+                        <span class="date">May 2025 – Jul. 2025</span>
+                        <h3>Fellowship, Health Policy and Management</h3>
+                        <span class="company">KOFIH, Yonsei University</span>
+                    </div>
                 </div>
-                <div class="countdown-box">
-                    <span class="countdown-value" id="hours">00</span>
-                    <span class="countdown-label">soat</span>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <span class="date">Jan. 2024 – Current</span>
+                        <h3>PhD student (mammography screening classification AI)</h3>
+                        <span class="company">Republican Center of Oncology and Radiology, Tashkent</span>
+                    </div>
                 </div>
-                <div class="countdown-box">
-                    <span class="countdown-value" id="minutes">00</span>
-                    <span class="countdown-label">daqiqa</span>
+                 <div class="timeline-item left">
+                    <div class="content">
+                        <span class="date">2021 – 2023</span>
+                        <h3>Residency – Oncology</h3>
+                        <span class="company">Pirogov Russian National Research Medical University, Moscow</span>
+                    </div>
                 </div>
-                <div class="countdown-box">
-                    <span class="countdown-value" id="seconds">00</span>
-                    <span class="countdown-label">soniya</span>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <span class="date">2015 - 2021</span>
+                        <h3>BA (Medical Faculty)</h3>
+                        <span class="company">Tashkent Medical Academy, Tashkent</span>
+                    </div>
+                </div>
+                 <div class="timeline-item left">
+                    <div class="content">
+                        <span class="date">2012 - 2015</span>
+                        <h3>Upper Secondary Education (Natural Sciences)</h3>
+                        <span class="company">Academic Lyceum of Tashkent Pediatric Medical Institute</span>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="content">
+                        <span class="date">2003 - 2012</span>
+                        <h3>School Education</h3>
+                        <span class="company">Public School №204, Tashkent</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+        
+        <section id="awards">
+            <h2>Awards & Achievements</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <p class="date">May 2025</p>
+                    <h3>Lee-John Wook Fellow</h3>
+                    <p>Health policy and management fellowship.</p>
+                </div>
+                <div class="card">
+                    <p class="date">Sep 2021</p>
+                    <h3>El-Yurt Umidi Foundation Grant</h3>
+                    <p>Received funding for residency studies.</p>
+                </div>
+                <div class="card">
+                    <p class="date">November 2020</p>
+                    <h3>WHO Volunteer Certificate</h3>
+                    <p>Certificate for participation in the WAAW2020 volunteering program.</p>
+                </div>
+                <div class="card">
+                    <p class="date">May 2019</p>
+                    <h3>Certificate of Appreciation</h3>
+                    <p>For effective coordination of the "Take a step towards a healthy lifestyle" campaign.</p>
+                </div>
+            </div>
+        </section>
 
-        <div class="invitation-text">
-            <div class="location-title">MANZIL</div>
-            <p class="location-address">Toshkent shahri, "Behruz" to'yxonasi</p>
-        </div>
+        <section id="skills">
+            <h2>Skills & Certifications</h2>
+            <div class="skills-grid">
+                <div>
+                    <h3>Languages</h3>
+                    <div class="language-item">
+                        <strong>Uzbek:</strong> <span>Fluent (Native)</span>
+                    </div>
+                    <div class="language-item">
+                        <strong>Russian:</strong> <span>Fluent</span>
+                    </div>
+                    <div class="language-item">
+                        <strong>English:</strong> <span>B2 (IELTS 6.0)</span>
+                    </div>
+                </div>
+                <div>
+                    <h3>Trainings & Courses</h3>
+                    <span class="skill-item">Health Informatics Specialization (Johns Hopkins)</span>
+                    <span class="skill-item">Introduction to Statistics (Stanford)</span>
+                    <span class="skill-item">Project Management Foundation (Google)</span>
+                    <span class="skill-item">Python Programming (Bioinformatics Institute)</span>
+                </div>
+            </div>
+        </section>
+        
+        <section id="references">
+            <h2>References</h2>
+            <div class="grid-container">
+                <div class="reference-card">
+                    <p class="ref-name">Dr Tillashaykhov M.N.</p>
+                    <p class="ref-title">Director, Republican Center of Oncology and Radiology, Tashkent</p>
+                    <a href="mailto:info@cancercenter.uz" class="ref-contact">info@cancercenter.uz</a>
+                </div>
+                 <div class="reference-card">
+                    <p class="ref-name">Vasuki Rajaguru</p>
+                    <p class="ref-title">Professor at Yonsei Graduate School of Public Health, Seoul</p>
+                    <a href="mailto:vasuki@yuhs.ac" class="ref-contact">vasuki@yuhs.ac</a>
+                </div>
+                 <div class="reference-card">
+                    <p class="ref-name">Dr Kudashkin Nikolai Evgenievich</p>
+                    <p class="ref-title">Associate Professor, Dept. of Oncology, Pirogov RNRMU, Moscow</p>
+                    <a href="mailto:dr.kudashkin@mail.ru" class="ref-contact">dr.kudashkin@mail.ru / +7(963)6384564</a>
+                </div>
+            </div>
+        </section>
 
-        <div class="map-container" style="position:relative;overflow:hidden;">
-            <a href="https://yandex.uz/maps/org/76740654566/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Behruz</a>
-            <a href="https://yandex.uz/maps/10335/tashkent/category/banquet_hall/184108315/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Банкетный зал в Ташкенте</a>
-            <iframe src="https://yandex.uz/map-widget/v1/org/76740654566/?ll=69.327778%2C41.310799&z=15" frameborder="0" allowfullscreen="true" style="position:relative;"></iframe>
-        </div>
-
-        <div class="footer">
-            <p>Shaxboz & Sevinch</p>
-            <p>19-aprel, 2025-yil</p>
-             <p class="developer-credit">
-                Sayt ishlab chiqdi: <a href="https://t.me/hrdcix" target="_blank" rel="noopener noreferrer">@hrdcix</a>
-            </p>
-        </div>
-
-    </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Umid Tokhtamuratov. Designed with a futuristic touch.</p>
+    </footer>
 
     <script>
-        // Countdown Timer
-        const weddingDate = new Date("April 19, 2025 18:00:00").getTime();
+        // PARTICLES.JS SCRIPT
+        var particlesJS = function(e, t) { /* ... truncated for brevity ... */
+            // Note: The full particles.js library code is very long.
+            // A CDN or local file is usually preferred. For this single-file
+            // solution, I'll include a minimal version of the library logic here.
+            // In a real project, this would be a separate file.
+            // Due to the extreme length, I'll paste a pre-configured version below
+            // to make the file usable.
+        };
+    </script>
+    <script>
+        // This is a placeholder for the particles.js library. 
+        // We'll use a CDN link for the actual implementation in this single file.
+    </script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // PARTICLES.JS CONFIG
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#00f7ff"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#00f7ff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 4,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "repulse"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 400,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
 
-        const countdownFunction = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
+            // ON-SCROLL FADE-IN ANIMATION
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
 
-            if (distance < 0) {
-                clearInterval(countdownFunction);
-                // Проверяем, существует ли элемент перед изменением
-                const countdownElement = document.getElementById("countdown");
-                if (countdownElement) {
-                    countdownElement.innerHTML = "<div style='font-size: 20px; font-weight: bold;'>TO'Y KUNI YETIB KELDI!</div>";
-                    countdownElement.style.display = 'block'; // Убедиться, что блок виден
-                }
-                 // Скрыть родительский блок .countdown, если таймер закончился
-                const countdownContainer = document.querySelector('.countdown');
-                if (countdownContainer) {
-                    countdownContainer.style.display = 'none'; // Прячем блок с таймером
-                }
-                return; // Выход из функции, если время вышло
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Проверяем существование элементов перед обновлением
-            const daysEl = document.getElementById("days");
-            const hoursEl = document.getElementById("hours");
-            const minutesEl = document.getElementById("minutes");
-            const secondsEl = document.getElementById("seconds");
-
-            if (daysEl) daysEl.innerText = days.toString().padStart(2, '0');
-            if (hoursEl) hoursEl.innerText = hours.toString().padStart(2, '0');
-            if (minutesEl) minutesEl.innerText = minutes.toString().padStart(2, '0');
-            if (secondsEl) secondsEl.innerText = seconds.toString().padStart(2, '0');
-
-        }, 1000);
-
-        // Вызываем функцию сразу при загрузке, чтобы избежать показа 00:00:00:00
-        countdownFunction();
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
     </script>
 
 </body>
